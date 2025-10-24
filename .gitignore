@@ -30,3 +30,6 @@ Thumbs.db
 
 # Environment variables
 .env
+
+#Folder Ignores
+Weekly Updates/
