@@ -46,3 +46,11 @@ pip install -r requirements.txt
 
 ### **4️⃣ Run the Application Locally**
 streamlit run app/main.py
+
+
+### for week3 run the code as it is 
+
+at line no 15 add the news api key from here  https://newsapi.org/account
+##  remaining things as it is
+
+
