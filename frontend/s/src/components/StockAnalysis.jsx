@@ -9,6 +9,13 @@ const fetchStockData = async (symbol, period) => {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
+
+    const contentType = response.headers.get("content-type") || "";
+    if (!contentType.includes("application/json")) {
+      throw new Error(
+        `API returned HTML instead of JSON. Check VITE_API_BASE_URL (got ${API_BASE}).`
+      );
+    }
     
     const result = await response.json();
 

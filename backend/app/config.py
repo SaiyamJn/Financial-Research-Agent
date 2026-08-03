@@ -13,9 +13,9 @@ class Settings(BaseSettings):
         env="MONGO_DB_NAME"
     )
 
-    # Redis configuration
+    # Redis configuration (leave empty to disable cache — e.g. on Render without Redis)
     REDIS_URL: str = Field(
-        default="redis://localhost:6379/0",
+        default="",
         env="REDIS_URL"
     )
 
