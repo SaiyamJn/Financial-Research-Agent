@@ -41,6 +41,10 @@ The goal is to develop a working **financial research assistant** that demonstra
 **Terminal 1:**
 ```bash
 cd backend
+python -m venv venv
+# Windows:
+venv\Scripts\activate
+# macOS/Linux: source venv/bin/activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload
 # or
@@ -356,7 +360,7 @@ Vercel hosts the **React frontend only**. The FastAPI backend (agents, MongoDB, 
 
 1. Push this repo to GitHub.
 2. Create a new **Web Service** on [Render](https://render.com) (or use the included `render.yaml`).
-3. Set root directory to `backend`, build: `pip install -r app/requirements.txt`, start: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`.
+3. Set root directory to `backend`, build: `pip install -r requirements.txt`, start: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`.
 4. Add env vars from `backend/.env.example` (`NEWS_API_KEY`, `GROQ_API_KEY` / `GEMINI_API_KEY`, `MONGO_URI`, etc.).
 5. Copy the public URL, e.g. `https://financial-research-api.onrender.com`.
 
