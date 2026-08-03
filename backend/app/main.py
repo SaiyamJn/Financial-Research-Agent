@@ -172,7 +172,7 @@ app.include_router(agent_routes.router, prefix="/api")  # AI Agent routes
 @app.on_event("startup")
 async def startup_event():
     db_instance = await init_db()
-    if db_instance:
+    if db_instance is not None:
         print("✅ MongoDB connection initialized")
     else:
         print("⚠️ MongoDB not available - app running without database features")
