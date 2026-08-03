@@ -1,6 +1,7 @@
 import axios from "axios";
+import { API_BASE } from "./config";
 
-export const API_BASE = "http://localhost:8000/api";
+export { API_BASE };
 
 // Search stocks from MongoDB
 export async function searchStocks(query, signal = null) {

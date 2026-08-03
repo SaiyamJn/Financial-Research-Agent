@@ -348,6 +348,31 @@ pytest app/tests/
 
 ---
 
+## ☁️ Deploy (Vercel frontend + hosted backend)
+
+Vercel hosts the **React frontend only**. The FastAPI backend (agents, MongoDB, Redis, LLM calls) must run on a long-lived host such as **Render**, **Railway**, or **Fly.io** — serverless timeouts are too short for the agent pipelines.
+
+### 1. Deploy the backend (Render example)
+
+1. Push this repo to GitHub.
+2. Create a new **Web Service** on [Render](https://render.com) (or use the included `render.yaml`).
+3. Set root directory to `backend`, build: `pip install -r app/requirements.txt`, start: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`.
+4. Add env vars from `backend/.env.example` (`NEWS_API_KEY`, `GROQ_API_KEY` / `GEMINI_API_KEY`, `MONGO_URI`, etc.).
+5. Copy the public URL, e.g. `https://financial-research-api.onrender.com`.
+
+### 2. Deploy the frontend on Vercel
+
+1. Import the GitHub repo in [Vercel](https://vercel.com).
+2. **Root Directory**: leave repo root (uses root `vercel.json`) **or** set to `frontend/s`.
+3. Add Environment Variable:
+   - `VITE_API_BASE_URL` = `https://YOUR-BACKEND-URL/api`  
+     (no trailing slash)
+4. Deploy. Open routes like `/dashboard` should work via SPA rewrites.
+
+Local frontend override: copy `frontend/s/.env.example` → `frontend/s/.env`.
+
+---
+
 ## 📄 License
 
 This project is part of the 8-Week Financial Research AI Agent Development Program.

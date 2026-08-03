@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import Plot from "react-plotly.js";
-
-// Fetch actual stock data from your API
-const API_BASE = "http://localhost:8000/api";
+import { API_BASE } from "../config";
 
 const fetchStockData = async (symbol, period) => {
   try {

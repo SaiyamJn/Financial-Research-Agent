@@ -30,6 +30,15 @@ Thumbs.db
 
 # Environment variables
 .env
+.env.local
+.env.*.local
+
+# Node / frontend build
+node_modules/
+frontend/s/node_modules/
+frontend/s/dist/
+dist/
+.vercel/
 
 #Folder Ignores
 Weekly Updates/
