@@ -33,6 +33,16 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
 
+@app.get("/")
+async def root():
+    """Health check for Render / load balancers."""
+    return {"status": "ok", "service": "Financial Research AI API"}
+
+
+@app.get("/health")
+async def health():
+    return {"status": "healthy"}
+
 # ---------------- STOCK ROUTE ----------------
 @app.get("/api/stock-data")
 async def get_stock_data(symbol: str, period: str = "3mo"):

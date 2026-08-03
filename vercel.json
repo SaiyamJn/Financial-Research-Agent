@@ -4,7 +4,14 @@
   "buildCommand": "npm run build --prefix frontend/s",
   "outputDirectory": "frontend/s/dist",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/api/:path*",
+      "destination": "https://financial-research-agent-wiqb.onrender.com/api/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {

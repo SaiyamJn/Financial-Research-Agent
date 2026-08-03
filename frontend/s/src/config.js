@@ -1,15 +1,18 @@
 /**
  * Shared API base URL.
- * Set VITE_API_BASE_URL in Vercel to your Render URL + /api
- * e.g. https://financial-research-agent-wiqb.onrender.com/api
- * Falls back to local FastAPI during development.
+ *
+ * Prefer same-origin `/api` so:
+ * - local: Vite proxies /api → localhost:8000
+ * - Vercel: rewrites /api → Render backend
+ *
+ * Optional override: VITE_API_BASE_URL=https://your-backend.onrender.com/api
  */
 function resolveApiBase() {
-  let base = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api").replace(
-    /\/$/,
-    ""
-  );
-  // If someone sets only the host, append /api so routes match FastAPI
+  const raw = (import.meta.env.VITE_API_BASE_URL || "").trim();
+  if (!raw) {
+    return "/api";
+  }
+  let base = raw.replace(/\/$/, "");
   if (!base.endsWith("/api")) {
     base = `${base}/api`;
   }
